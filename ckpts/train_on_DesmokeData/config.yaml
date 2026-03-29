@@ -1,0 +1,62 @@
+model_module: models.HG_Mamba
+model_class: Desmoke_Net
+common:
+  img_size: 192
+  device: 3
+  train_root: null
+  val_root: null
+  test_root: /home/wushiwei/projects/dataset/surgical_desmoke_dataset/DeSmoking_Dataset_TMI/test
+  predict_root: /home/wushiwei/projects/dataset/surgical_desmoke_dataset/DeSmoking_Dataset_TMI/test
+  output_dir: ./ckpts
+  desmoke_ckpt: /home/wushiwei/projects/demo/HG_Mamba/ckpts/desmoke_epoch=191.ckpt
+  path_to_save_image: ./results
+train:
+  project: HG-mamba
+  run_name: HGMamba-train-on-TMI
+  use_trans: true
+  ema_decay: 0.99
+  check_val_every_n_epoch: 2
+  save_top_k: 3
+  num_workers: 4
+  epochs: 200
+  batch_size: 4
+  loss_name:
+  - l1
+  - fft_loss
+  - ssim_loss
+  weights:
+  - 1.0
+  - 0.1
+  - 0.5
+  lr: 0.0002
+  lr_scheduler: constant
+  use_wandb: true
+  offline: false
+  resume: false
+  resume_wandb_id: null
+  resume_ckpt: null
+model:
+  inp_channels: 3
+  out_channels: 3
+  dim:
+  - 48
+  - 64
+  - 128
+  - 64
+  - 48
+  num_blocks:
+  - 2
+  - 3
+  - 4
+  - 3
+  - 2
+  kernels:
+  - 5
+  - 5
+  - 5
+  - 5
+  - 5
+  rgb_mean:
+  - 0.0
+  - 0.0
+  - 0.0

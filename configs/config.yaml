@@ -1,0 +1,59 @@
+# Entry point: which module and class to instantiate as the model
+model_module: models.HG_Mamba
+model_class: Desmoke_Net
+
+common:
+  img_size: 224                          # Input image resolution (H x W), assumes square
+  device: 1                              # GPU device index (e.g. cuda:1)
+
+  # Dataset roots — each directory must contain two subdirs: smoky/ and smokeless/
+  train_root: "your/train/"
+  val_root:   "your/val/"
+  test_root:  "your/test/"
+
+  predict_root:   "your/predict/"        # Input images for inference (no ground truth required)
+
+  output_dir: "./ckpts"                  # Directory where model checkpoints are saved
+  desmoke_ckpt: null                     # Path to a pretrained desmoke checkpoint; null = train from scratch
+
+  path_to_save_image: './results'        # Directory where output images are written during test/predict
+
+
+train:
+  project:  HG-Mamba                     # W&B project name (also used as a run group identifier)
+  run_name: Run-HG-Mamba                 # W&B run name for this specific experiment
+
+  ema_decay: 0.99                        # Exponential Moving Average decay; higher = slower update of shadow weights
+
+  check_val_every_n_epoch: 5             # Run validation loop every N training epochs to save time
+  num_workers: 4                         # DataLoader worker processes for parallel data loading
+  epochs: 100
+  batch_size: 4
+
+  # Loss function composition: final_loss = sum(weight_i * loss_i)
+  loss_name:
+    - 'l1'                               # Pixel-wise L1 loss
+    - 'fcr_loss'                         # FCR loss
+  weights:
+    - 1.0 
+    - 0.1 
+
+  lr:     4.0e-4
+  lr_min: 4.0e-6
+  lr_scheduler: cosine
+
+  use_wandb: False                       # Set True to enable Weights & Biases logging
+  offline: True                          # If use_wandb=True, buffer logs locally instead of syncing live
+
+  resume: False                          # Set True to continue training from a checkpoint
+  resume_wandb_id: null                  # W&B run ID to resume (only needed when resume=True)
+  resume_ckpt:  null                     # Path to checkpoint file to resume from
+
+
+model:
+  inp_channels: 3                        # Input channels — RGB image
+  out_channels: 3                        # Output channels — restored RGB image
+  dim: [48, 64, 128, 64, 48]
+  num_blocks: [2, 3, 4, 3, 2]
+  kernels: [5, 5, 5, 5, 5]
+  rgb_mean: [0.4488, 0.4371, 0.4040]

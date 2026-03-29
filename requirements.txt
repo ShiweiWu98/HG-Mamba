@@ -1,0 +1,26 @@
+# torch==2.0.1 
+# torchvision==0.15.2 
+# torchaudio==2.0.2
+packaging
+triton
+timm==0.4.12
+pytest 
+chardet 
+yacs 
+termcolor
+submitit 
+tensorboardX
+fvcore
+seaborn
+opencv-python
+tensorboard
+Cython
+mmcv==2.2.0 -f https://download.openmmlab.com/mmcv/dist/cu118/torch2.0/index.html
+pytorch-lightning==1.9.4
+ptflops
+scikit-image
+brisque
+omegaconf
+natsort
+# 'numpy<2.0'
+PyWavelets

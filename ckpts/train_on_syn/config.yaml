@@ -1,0 +1,44 @@
+model_module: models.HG_Mamba
+model_class: Desmoke_Net
+common:
+  img_size: 224
+  device: 1
+  train_root: null
+  val_root: null
+  test_root: ./dataset/Syn/test
+  predict_root: ./dataset/Syn/test # Unlabeled dataset
+  output_dir: ./ckpts/train_on_syn
+  desmoke_ckpt: ./ckpts/train_on_syn/desmoke.ckpt
+  det_ckpt: null
+  path_to_save_image: './results'
+  
+train:
+  project: HG-Mamba
+  run_name: Run-HG-Mamba
+  ema_decay: 0.99
+  check_val_every_n_epoch: 5
+  num_workers: 4
+  epochs: 100
+  batch_size: 4
+  loss_name:
+    - 'l1'
+    - 'fcr_loss'
+  weights: 
+    - 1.0
+    - 0.1
+  lr: 4.0e-4
+  lr_min: 4.0e-6
+  lr_scheduler: cosine  # option: 'cosine' 或 'constant'
+  use_wandb: False
+  offline: True
+  resume:  False
+  resume_wandb_id: null
+  resume_ckpt:  null
+model:
+  inp_channels: 3
+  out_channels: 3
+  dim: [48, 64, 128, 64, 48]
+  num_blocks: [2, 3, 4, 3, 2]
+  kernels: [5,5,5,5,5]
+  rgb_mean: [0.4488, 0.4371, 0.4040]
+
