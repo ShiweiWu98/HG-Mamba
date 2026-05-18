@@ -50,19 +50,6 @@ Together, these designs enable HG-Mamba to effectively remove complex surgical s
 - 🏆 Superior performance on both **synthetic** and **real-world** laparoscopic desmoking benchmarks.
 - 📦 A large-scale **synthetic smoke dataset** is constructed to supplement limited real paired data.
 
----
-
-## 🖼️ Visual Results
-
-### Qualitative comparison
-<p align="center">
-  <img src="assets/visual_results.png" width="90%">
-</p>
-
-HG-Mamba produces cleaner reconstructions and preserves sharper anatomical boundaries under diverse smoke conditions.
-
----
-
 ## 🏗️ Framework
 
 <p align="center">
@@ -72,38 +59,6 @@ HG-Mamba produces cleaner reconstructions and preserves sharper anatomical bound
 The overall architecture of our HG-Mamba-based desmoking network.
 
 ---
-
-## 📊 Main Results
-
-### Quantitative comparison on Synthetic Dataset and DesmokeData
-
-## 📊 Quantitative Results
-
-Comparison on the **Synthetic Dataset** and **DesmokeData**.  
-Higher **SSIM / PSNR** indicates better performance, while lower **CIEDE / Params / MACs** is preferred.
-
-| Method         | Venue       | Syn. SSIM ↑ | Syn. PSNR ↑ | Syn. CIEDE ↓ | Desmoke SSIM ↑ | Desmoke PSNR ↑ | Desmoke CIEDE ↓ |  Params ↓ |     MACs ↓ |
-| -------------- | ----------- | ----------: | ----------: | -----------: | -------------: | -------------: | --------------: | --------: | ---------: |
-| Cyclic-DeGAN   | CBM'20      |       0.865 |      21.280 |        7.525 |          0.833 |         22.397 |           7.173 |    11.97M |     28.11G |
-| DehazeFormer-B | TIP'23      |       0.959 |      28.219 |        3.159 |          0.879 |         26.341 |           4.511 |     2.52M |     19.76G |
-| DEA-Net        | TIP'23      |       0.964 |      29.706 |        2.833 |          0.847 |         25.747 |           4.714 |     3.65M |     24.68G |
-| SelfSVD        | ECCV'24     |       0.964 |      29.412 |        2.705 |          0.870 |         25.670 |           4.681 |    15.58M |     23.51G |
-| ConvIR-S       | TPAMI'24    |       0.953 |      28.849 |        2.891 |          0.877 |         26.442 |           4.540 |     5.53M |     42.23G |
-| MB-Taylor-B V2 | TPAMI'25    |       0.969 |      29.551 |        2.658 |          0.878 |         26.515 |           4.383 |     2.63M |     24.40G |
-| SGDN           | AAAI'25     |       0.970 |      29.670 |        2.605 |          0.879 |         26.871 |           4.168 |    11.09M |     41.16G |
-| MambaIRv2-S    | CVPR'25     |       0.964 |      28.730 |        2.814 |          0.870 |         25.234 |           4.891 |     9.63M |    192.91G |
-| **Ours**       | **ICME'26** |   **0.972** |  **30.393** |    **2.354** |      **0.888** |     **27.072** |       **4.064** | **1.69M** | **18.62G** |
-
----
-
-## 🧠 Method
-
-### 1. Heuristic-Guided State Space Model (HG-SSM)
-HG-SSM introduces an input-guided dynamic sampling strategy to select spatially related hidden states and fuse them adaptively, overcoming the limitations of strict sequential state transitions in conventional SSMs.
-
-### 2. Frequency Refine Feed-Forward Network (FR-FFN)
-FR-FFN decomposes features into multiple frequency bands and applies adaptive weighting to each band, enabling finer frequency refinement and better structure restoration.
-
 ## 🛠️ Installation
 
 Please follow the steps below to set up the environment.  
