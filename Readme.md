@@ -1,10 +1,6 @@
 <h1 align="center">HG-Mamba: Heuristic-Guided State Space Model for Laparoscopic Image Desmoking</h1>
 
 <p align="center">
-  <strong>Heuristic-Guided State Space Model for Laparoscopic Image Desmoking</strong>
-</p>
-
-<p align="center">
   Shiwei Wu, Xiaobo Zhu, Song Zhang, Yu An, Xinyu Zhang, Hui Yan, Jie Tian, Xiyuan Hu, Zhenyu Liu
 </p>
 
