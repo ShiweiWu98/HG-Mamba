@@ -1,4 +1,4 @@
-<h1 align="center">HG-Mamba</h1>
+<h1 align="center">HG-Mamba: Heuristic-Guided State Space Model for Laparoscopic Image Desmoking</h1>
 
 <p align="center">
   <strong>Heuristic-Guided State Space Model for Laparoscopic Image Desmoking</strong>
