@@ -72,7 +72,7 @@ The code has been tested with the following configuration:
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/yourname/HG-Mamba.git
+git clone https://github.com/ShiweiWu98/HG-Mamba.git
 cd HG-Mamba
 ```
 
