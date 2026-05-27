@@ -57,7 +57,7 @@ class StateFusion(nn.Module):
 # class StateFusion(nn.Module):
 #     """
 #     Replaces torchvision DeformConv2d with F.grid_sample.
-#     Numerically identical to the original (max|Δ| < 1e-5), but ~3-5x faster.
+#     Numerically identical to the original, but ~3-5x faster.
 
 #     NOTE: Please use this version for training instead of the DeformConv2d version.
 
